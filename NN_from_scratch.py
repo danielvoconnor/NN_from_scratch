@@ -106,7 +106,7 @@ def predict(W, activs, X):
     return labels_pred
 
 def prepare_MNIST():
-    dataset = sk.datasets.fetch_openml('mnist_784') # Downloading the data is slow.
+    dataset = sk.datasets.fetch_openml('mnist_784') 
     X, labels = np.float64(dataset.data)/255, np.int64(dataset.target)
     
     y = np.zeros((len(X), 10))
@@ -119,7 +119,7 @@ def prepare_MNIST():
     return X_train.T, y_train.T, labels_train, X_val.T, y_val.T, labels_val
     
 if __name__ == '__main__':
-    print('Loading MNIST data...')
+    print('Downloading MNIST data (slow)...')
     X_train, y_train, labels_train, X_val, y_val, labels_val = prepare_MNIST()
     print('Finished loading MNIST data. Training begins now.')
     
@@ -147,28 +147,3 @@ if __name__ == '__main__':
     labels_pred = predict(W, activs, X_val)
     acc = np.mean(labels_pred == labels_val)
     print(f'Classification accuracy (validation data): {acc:.6}')
-
-
-
-
-
-
-
-
-
-
-    
-
-    
-        
-        
-
-            
-                
-            
-                
-    
-        
-    
-    
-    
